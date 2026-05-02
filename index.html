@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zadigital - Jasa Pembuatan Website Profesional untuk UMKM. Kelola produk dari HP, cepat, dan murah.">
+    <meta name="keywords" content="jasa website, website umkm, bikin web murah, zadigital">
+    <title>Zadigital - Jasa Pembuatan Website Profesional</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-default: #0a1645;
+            --color-accent: #0eeef7;
+            --color-secondary: #126bdd;
+            --color-light-bg: #f0f4ff;
+            --color-light-surface: #ffffff;
+            --color-dark-bg: #0a1645;
+            --color-dark-text: #0eeef7;
+            --color-red: #ff3b30;
+            
+            --border-width: 3px;
+            --shadow-offset: 6px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--color-light-bg);
+            color: var(--color-default);
+            line-height: 1.6;
+            padding-top: 80px; /* Offset for desktop nav */
+            padding-bottom: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* --- NEUBRUTALISM UTILITIES --- */
+        .neu-card {
+            background: var(--color-light-surface);
+            border: var(--border-width) solid var(--color-default);
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-default);
+            border-radius: 8px;
+            padding: 30px;
+            transition: transform 0.2s;
+        }
+        
+        .neu-btn {
+            display: inline-block;
+            background: var(--color-accent);
+            color: var(--color-default);
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            text-align: center;
+            padding: 16px 28px;
+            border: var(--border-width) solid var(--color-default);
+            box-shadow: 4px 4px 0 var(--color-default);
+            border-radius: 8px;
+            transition: all 0.1s ease;
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+        .neu-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0 0 0 var(--color-default);
+        }
+        .neu-btn-secondary {
+            background: var(--color-secondary);
+            color: white;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            text-shadow: 3px 3px 0 var(--color-accent);
+        }
+
+        @keyframes floatLogo {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+        .hero-floating-logo {
+            height: 100px;
+            margin: 0 auto 30px;
+            display: block;
+            animation: floatLogo 4s ease-in-out infinite;
+        }
+
+        /* =========================================
+           RESPONSIVE NAVIGATION
+           ========================================= */
+        /* TOP NAVIGATION (Desktop) */
+        .desktop-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: var(--color-light-surface);
+            border-bottom: var(--border-width) solid var(--color-default);
+            z-index: 1000;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-weight: 900;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--color-default);
+        }
+        .logo img {
+            height: 35px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--color-default);
+            font-weight: 800;
+            font-size: 1rem;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: var(--color-secondary);
+        }
+
+        /* BOTTOM NAVIGATION (Mobile) */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--color-light-surface);
+            border-top: var(--border-width) solid var(--color-default);
+            z-index: 1000;
+            height: 70px;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.05);
+        }
+        .mobile-nav-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            height: 100%;
+            padding: 0 10px;
+        }
+        .mobile-item {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--color-default);
+            font-size: 0.7rem;
+            font-weight: 800;
+            gap: 4px;
+            width: 25%;
+        }
+        .mobile-item svg {
+            width: 24px;
+            height: 24px;
+            stroke-width: 2.5;
+            z-index: 2;
+        }
+        .mobile-item span {
+            z-index: 2;
+        }
+        .mobile-item.active {
+            color: var(--color-secondary);
+        }
+
+        /* --- HERO --- */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            background-color: var(--color-light-bg);
+        }
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 4px 4px 0 var(--color-accent);
+        }
+        .hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-weight: 600;
+            color: var(--color-default);
+        }
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* --- KEUNGGULAN (Why Us) --- */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .feature-card {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+
+        /* --- PRICING --- */
+        .pricing-section {
+            background: var(--color-dark-bg);
+            color: white;
+            border-top: var(--border-width) solid var(--color-default);
+            border-bottom: var(--border-width) solid var(--color-default);
+        }
+        .pricing-section .section-title {
+            text-shadow: 3px 3px 0 var(--color-secondary);
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .price-card {
+            display: flex;
+            flex-direction: column;
+            color: var(--color-default);
+        }
+        .price-card.featured {
+            box-shadow: var(--shadow-offset) var(--shadow-offset) 0 var(--color-accent);
+        }
+        .price-title {
+            font-size: 1.8rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+            color: var(--color-default);
+        }
+        .features-list {
+            list-style: none;
+            margin-bottom: 30px;
+            flex-grow: 1;
+        }
+        .features-list li {
+            padding: 12px 0;
+            border-bottom: 2px dashed rgba(10, 22, 69, 0.2);
+            font-weight: 600;
+            display: flex;
+            gap: 10px;
+        }
+        .features-list li::before { content: '👉'; }
+
+        /* --- ALUR KERJA (How it Works) --- */
+        .workflow-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .step-card {
+            text-align: center;
+            position: relative;
+        }
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: var(--color-accent);
+            color: var(--color-default);
+            border: 3px solid var(--color-default);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 900;
+            margin: 0 auto 20px;
+            box-shadow: 3px 3px 0 var(--color-default);
+        }
+        .step-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        /* --- FAQ --- */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--color-light-surface);
+            border: var(--border-width) solid var(--color-default);
+            box-shadow: 4px 4px 0 var(--color-default);
+            border-radius: 8px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        .faq-summary {
+            padding: 20px;
+            font-weight: 800;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--color-light-surface);
+            list-style: none; /* remove default arrow */
+        }
+        .faq-summary::-webkit-details-marker { display: none; }
+        .faq-summary::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--color-secondary);
+        }
+        details[open] .faq-summary::after { content: '−'; }
+        .faq-content {
+            padding: 0 20px 20px;
+            font-weight: 500;
+            color: #334155;
+            line-height: 1.7;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--color-default);
+            color: white;
+            padding: 60px 0 40px;
+            text-align: center;
+            border-top: var(--border-width) solid var(--color-accent);
+        }
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: var(--color-light-surface);
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .footer-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: 0.2s;
+        }
+        .footer-links a:hover {
+            transform: translateY(-3px);
+            background: var(--color-accent);
+        }
+        .footer-links img {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* =========================================
+           MEDIA QUERIES
+           ========================================= */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 0; /* No desktop nav */
+                padding-bottom: 70px; /* Space for mobile nav */
+            }
+            .desktop-nav { display: none; }
+            .mobile-nav { display: block; }
+            
+            .hero h1 { font-size: 2.2rem; }
+            .section-title { font-size: 2rem; }
+            
+            .features-grid, .pricing-grid, .workflow-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* Add arrow connector between steps on mobile */
+            .step-card::after {
+                content: '↓';
+                display: block;
+                font-size: 2rem;
+                color: var(--color-secondary);
+                margin: 20px 0;
+            }
+            .step-card:last-child::after { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+         TOP NAVIGATION (Desktop & Tablet)
+         ========================================== -->
+    <nav class="desktop-nav">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <!-- Ganti src dengan link logo Zadigital -->
+                <img src="https://i.ibb.co.com/5xR4zwDG/logo-tanpa-nama.png" alt="Zadigital Logo">
+                ZADIGITAL
+            </a>
+            <div class="nav-links">
+                <a href="#keunggulan">Keunggulan</a>
+                <a href="#layanan">Layanan</a>
+                <a href="#alur">Alur Kerja</a>
+                <a href="#faq">FAQ</a>
+                <a href="#kontak" class="neu-btn" style="padding: 10px 20px; font-size: 0.9rem;">Hubungi Kami</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ==========================================
+         HERO SECTION
+         ========================================== -->
+    <section class="hero">
+        <div class="container">
+            <img src="https://i.ibb.co.com/5xR4zwDG/logo-tanpa-nama.png" alt="Zadigital Logo" class="hero-floating-logo">
+            <h1>Digitalisasi Bisnismu,<br>Tanpa Bikin Pusing.</h1>
+            <p>Kami mengubah cara UMKM berjualan. Solusi website etalase instan, desain premium, dan 100% dikelola semudah mengetik pesan di HP Anda.</p>
+            <div class="hero-btns">
+                <a href="#layanan" class="neu-btn">🚀 Mulai Sekarang</a>
+                <a href="#alur" class="neu-btn neu-btn-secondary" style="border-color: var(--color-accent); box-shadow: 4px 4px 0 var(--color-accent);">Lihat Alur Kerja</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         KEUNGGULAN (Why Choose Us)
+         ========================================== -->
+    <section id="keunggulan">
+        <div class="container">
+            <h2 class="section-title">Kenapa Pilih Kami?</h2>
+            <div class="features-grid">
+                <div class="neu-card feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Teknologi Cepat</h3>
+                    <p>Website tanpa database rumit. Sangat ringan, cepat diakses, dan tidak perlu pusing membayar sewa server mahal setiap bulannya.</p>
+                </div>
+                <div class="neu-card feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>Desain Premium</h3>
+                    <p>Bukan template gratisan pasaran. Desain kami dirancang eksklusif (seperti Neubrutalism & Glassmorphism) untuk mengangkat derajat brand Anda.</p>
+                </div>
+                <div class="neu-card feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Support Penuh</h3>
+                    <p>Gaptek? Tidak masalah. Tim kami akan memandu Anda, memberikan e-book tutorial, hingga revisi tampilan sampai Anda puas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PRICING (Pilihan Layanan)
+         ========================================== -->
+    <section id="layanan" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title">Pilihan Layanan</h2>
+            
+            <div class="pricing-grid">
+                <!-- PAKET EXPRESS -->
+                <div class="neu-card price-card">
+                    <div style="background: var(--color-red); color: white; display: inline-block; padding: 4px 12px; font-weight: 800; border-radius: 999px; border: 2px solid var(--color-default); margin-bottom: 10px; width: max-content;">PROMO UMKM</div>
+                    <h3 class="price-title">Paket Express</h3>
+                    <p style="margin-bottom: 20px;">Website etalase instan, kelola lewat Google Sheets.</p>
+                    
+                    <div style="text-decoration: line-through; font-weight: 800; opacity: 0.6; font-size: 1.2rem;">Rp 700.000</div>
+                    <div class="price-amount">Rp 299k</div>
+                    
+                    <ul class="features-list">
+                        <li>Terima Beres (Langsung Online)</li>
+                        <li>Bebas Pilih 4 Tema Premium</li>
+                        <li>Kelola 100% dari HP (Google Sheets)</li>
+                        <li>Checkout Order langsung via WhatsApp</li>
+                        <li>Gratis Input 20 Produk Awal</li>
+                        <li><strong>Tanpa Biaya Server Bulanan</strong></li>
+                    </ul>
+                    
+                    <a href="paket_express.html" class="neu-btn">👀 Lihat Selengkapnya</a>
+                </div>
+
+                <!-- PAKET CUSTOM -->
+                <div class="neu-card price-card featured">
+                    <div style="background: var(--color-accent); color: var(--color-default); display: inline-block; padding: 4px 12px; font-weight: 800; border-radius: 999px; border: 2px solid var(--color-default); margin-bottom: 10px; width: max-content;">RECOMMENDED</div>
+                    <h3 class="price-title">Paket Custom</h3>
+                    <p style="margin-bottom: 20px;">Desain eksklusif & penambahan fitur khusus untuk brand Anda.</p>
+                    
+                    <div style="text-decoration: line-through; font-weight: 800; opacity: 0.6; font-size: 1.2rem;">Mulai Rp 1.000.000</div>
+                    <div class="price-amount">Rp 500k+</div>
+                    
+                    <ul class="features-list">
+                        <li>Semua fitur di Paket Express</li>
+                        <li>Desain Layout Eksklusif (Bebas Request)</li>
+                        <li>Penambahan Halaman/Section Baru (Galeri, Portofolio, Video, dll)</li>
+                        <li>Struktur UX/UI Disesuaikan</li>
+                        <li>Prioritas Support & Konsultasi</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/6285385535252?text=Halo%20Zadigital,%20saya%20mau%20konsultasi%20untuk%20pembuatan%20Website%20Paket%20Custom" target="_blank" class="neu-btn neu-btn-secondary" style="border-color: var(--color-accent); box-shadow: 4px 4px 0 var(--color-accent);">💬 Konsultasi Sekarang</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         ALUR KERJA (How it Works)
+         ========================================== -->
+    <section id="alur">
+        <div class="container">
+            <h2 class="section-title">Alur Kerja Kami</h2>
+            <div class="workflow-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h4>Konsultasi</h4>
+                    <p style="font-size: 0.95rem;">Hubungi kami via WA, pilih paket, dan ceritakan kebutuhan bisnis Anda.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h4>Kirim Data</h4>
+                    <p style="font-size: 0.95rem;">Kirimkan logo, warna brand, dan daftar harga/produk Anda ke tim kami.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h4>Proses Eksekusi</h4>
+                    <p style="font-size: 0.95rem;">Duduk tenang. Kami merakit dan mendesain website Anda dalam waktu singkat.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <h4>Online & Edukasi</h4>
+                    <p style="font-size: 0.95rem;">Web diserahkan. Kami berikan E-Book cara edit web sendiri dari HP Anda.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FAQ (Objection Killer)
+         ========================================== -->
+    <section id="faq" style="background: var(--color-light-surface);">
+        <div class="container faq-container">
+            <h2 class="section-title">Pertanyaan Umum</h2>
+            
+            <details class="faq-item">
+                <summary class="faq-summary">Apakah ada biaya bulanan atau sewa hosting?</summary>
+                <div class="faq-content">
+                    Untuk Paket Express, <strong>tidak ada biaya bulanan sama sekali</strong> untuk server/hosting. Kami menggunakan teknologi static modern dan GitHub Pages sehingga web Anda online gratis selamanya. Anda hanya membayar sekali di awal.
+                </div>
+            </details>
+            
+            <details class="faq-item">
+                <summary class="faq-summary">Bagaimana jika saya tidak mengerti coding?</summary>
+                <div class="faq-content">
+                    Website ini memang dirancang khusus untuk orang awam. Anda tidak perlu menyentuh kode sama sekali. Untuk mengubah harga produk, menambah stok, atau mengubah teks, Anda cukup mengetiknya di aplikasi Google Sheets (seperti Excel) dari HP Anda.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-summary">Berapa lama proses pembuatan website?</summary>
+                <div class="faq-content">
+                    Untuk Paket Express, website bisa langsung jadi dan online dalam waktu <strong>1x24 jam</strong> setelah Anda mengirimkan data lengkap (Logo & Produk). Untuk Paket Custom, proses memakan waktu 3-5 hari kerja tergantung tingkat kerumitan.
+                </div>
+            </details>
+
+            <details class="faq-item">
+                <summary class="faq-summary">Apakah saya bisa menggunakan domain sendiri (.com / .id)?</summary>
+                <div class="faq-content">
+                    Sangat bisa! Namun, harga paket belum termasuk biaya pembelian domain. Kami bisa membantu Anda menyambungkan website ini ke domain .com atau .id milik Anda sendiri.
+                </div>
+            </details>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         FOOTER
+         ========================================== -->
+    <footer id="kontak">
+        <div class="container">
+            <div class="footer-logo">ZADIGITAL</div>
+            
+            <div class="footer-links" style="margin-top: 20px;">
+                <!-- White icons via simpleicons -->
+                <a href="https://wa.me/6285385535252" target="_blank" aria-label="WhatsApp">
+                    <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WA">
+                </a>
+                <a href="https://www.instagram.com/zadigital_followers" target="_blank" aria-label="Instagram">
+                    <img src="https://cdn.simpleicons.org/instagram/white" alt="IG">
+                </a>
+                <a href="https://shopee.co.id/zadigital_28" target="_blank" aria-label="Shopee">
+                    <img src="https://cdn.simpleicons.org/shopee/white" alt="Shopee">
+                </a>
+            </div>
+            
+            <p style="font-size: 0.85rem; color: #cbd5e1;">&copy; 2026 Zadigital. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+         BOTTOM NAVIGATION (Mobile Only)
+         ========================================== -->
+    <nav class="mobile-nav">
+        <div class="mobile-nav-container">
+            <!-- Ikon SVG simpel menggunakan feather icons style -->
+            <a href="#" class="mobile-item active">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                <span>Beranda</span>
+            </a>
+            <a href="#layanan" class="mobile-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                <span>Layanan</span>
+            </a>
+            <a href="#alur" class="mobile-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <span>Alur</span>
+            </a>
+            <a href="#kontak" class="mobile-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                <span>Kontak</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // Script sederhana untuk mendeteksi scroll dan mengubah ikon aktif di Mobile Nav
+        document.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navItems = document.querySelectorAll('.mobile-item');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            // Default ke beranda jika di paling atas
+            if(pageYOffset < 100) current = 'beranda';
+
+            navItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('href') === `#${current}` || (current === 'beranda' && item.getAttribute('href') === '#')) {
+                    item.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
