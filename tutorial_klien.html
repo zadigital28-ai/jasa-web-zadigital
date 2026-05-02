@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Panduan - Website Etalase Digital</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f172a;
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text: #334155;
+            --text-light: #64748b;
+            --danger: #ef4444;
+            --success: #10b981;
+            --border: #e2e8f0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 0 0 24px 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+        header p {
+            color: #cbd5e1;
+            font-size: 0.95rem;
+        }
+
+        /* Alert Warning */
+        .alert {
+            background-color: #fef2f2;
+            border-left: 5px solid var(--danger);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+        }
+        .alert h3 {
+            color: var(--danger);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            border: 1px solid var(--border);
+        }
+        .section-card h2 {
+            color: var(--secondary);
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--bg);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .badge {
+            background: var(--bg);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Tips Box */
+        .tips-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.95rem;
+        }
+        .tips-box strong { color: var(--success); }
+
+        /* Step List */
+        .step-list {
+            list-style: none;
+            counter-reset: my-awesome-counter;
+        }
+        .step-list li {
+            position: relative;
+            padding-left: 45px;
+            margin-bottom: 20px;
+        }
+        .step-list li::before {
+            counter-increment: my-awesome-counter;
+            content: counter(my-awesome-counter);
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* Table Style */
+        .rule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 0.9rem;
+        }
+        .rule-table th, .rule-table td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            text-align: left;
+        }
+        .rule-table th {
+            background-color: var(--bg);
+            color: var(--secondary);
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+        }
+        .btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 0.9em;
+        }
+
+        /* Footer */
+        .main-footer {
+            margin-top: 40px;
+            padding: 40px 20px;
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            border-radius: 24px 24px 0 0;
+            box-shadow: 0 -10px 25px -5px rgba(0,0,0,0.1);
+        }
+        .footer-brand {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .footer-brand img {
+            height: 30px;
+            border-radius: 4px;
+        }
+        .footer-brand h2 {
+            font-weight: 800;
+            font-size: 1.5rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .main-footer p {
+            color: #cbd5e1;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.2s;
+        }
+        .social-icon img {
+            width: 16px;
+            height: 16px;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.5rem; }
+            .section-card { padding: 20px; }
+            .rule-table { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Buku Panduan Interaktif</h1>
+        <p>Cara mengelola website Anda menggunakan Google Sheets</p>
+    </header>
+
+    <div class="container">
+
+        <div class="alert">
+            <h3>⚠️ PERINGATAN SANGAT PENTING!</h3>
+            <p><strong>DILARANG KERAS menghapus Baris 1 (Header/Judul Kolom)</strong> di dalam Google Sheets. Jika baris pertama dihapus atau diubah namanya, website Anda akan <strong>error dan tidak bisa memuat data</strong>. Anda hanya boleh mengubah isi di Baris 2 dan seterusnya.</p>
+        </div>
+
+        <div class="section-card">
+            <h2><span class="badge">Bab 1</span> Pengaturan Toko (Branding)</h2>
+            <p>Buka sheet <strong>"Branding"</strong> untuk mengubah tampilan dasar website Anda.</p>
+            
+            <table class="rule-table">
+                <tr>
+                    <th>Kolom</th>
+                    <th>Cara Mengisi</th>
+                </tr>
+                <tr>
+                    <td><strong>brand_name</strong></td>
+                    <td>Nama toko Anda. Jika dikosongkan, nama teks di website akan hilang (cocok jika Anda pakai Logo gambar).</td>
+                </tr>
+                <tr>
+                    <td><strong>wa_number</strong></td>
+                    <td><span class="code-block">SANGAT PENTING:</span> Nomor WhatsApp <strong>WAJIB diawali angka 62</strong> (contoh: 628123456789). Jangan gunakan angka 0 di depan, tanda +, spasi, atau strip (-).</td>
+                </tr>
+                <tr>
+                    <td><strong>wa_greeting</strong></td>
+                    <td>Pesan pembuka otomatis saat pembeli klik tombol WA.</td>
+                </tr>
+                <tr>
+                    <td><strong>hero_title & subtitle</strong></td>
+                    <td>Teks besar yang muncul di bagian paling atas website Anda.</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="section-card">
+            <h2><span class="badge">Bab 2</span> Manajemen Produk</h2>
+            <p>Buka sheet <strong>"Data"</strong> untuk menambah atau mengedit produk.</p>
+            
+            <ul class="step-list">
+                <li>
+                    <strong>Harga Coret (Diskon) & Harga Asli</strong><br>
+                    Isi angka murni <strong>TANPA TITIK ATAU KOMA</strong>. Tulis <span class="code-block">50000</span> bukan <s>50.000</s>. Website akan otomatis menambahkan format Rupiah.
+                </li>
+                <li>
+                    <strong>Kolom Stok</strong><br>
+                    Anda wajib mengisi dengan salah satu dari 3 kata ini (huruf kecil): <br>
+                    <span class="code-block">tersedia</span> | <span class="code-block">segera</span> | <span class="code-block">habis</span>
+                </li>
+                <li>
+                    <strong>Sembunyikan Tombol Jumlah (Qty)</strong><br>
+                    Jika produk Anda tidak butuh jumlah (misal: jasa, e-book), isi kolom <strong>sembunyikan_qty</strong> dengan kata <span class="code-block">ya</span>.
+                </li>
+                <li>
+                    <strong>Badge Label</strong><br>
+                    Isi kolom <strong>badge</strong> dengan kata <span class="code-block">terlaris</span>, <span class="code-block">promo</span>, atau <span class="code-block">baru</span> untuk menampilkan label di ujung foto produk.
+                </li>
+            </ul>
+        </div>
+
+        <div class="section-card">
+            <h2><span class="badge">Bab 3</span> Testimoni & FAQ</h2>
+            <p>Untuk menambah Testimoni yang berjalan otomatis, buka sheet <strong>"Testimonial"</strong> dan isi nama pelanggan, isi review, jumlah bintang (1-5), dan platform (misal: Shopee, Google).</p>
+            <p style="margin-top: 10px;">Untuk menambah daftar pertanyaan, buka sheet <strong>"FAQ"</strong>. Isi pertanyaan di kolom question, dan jawaban di kolom answer. Semakin banyak baris yang Anda isi, semakin banyak FAQ yang muncul di website.</p>
+        </div>
+
+        <div class="section-card">
+            <h2><span class="badge">Bab 4</span> Cara Upload Gambar</h2>
+            <p>Google Sheets tidak bisa menyimpan file foto secara langsung. Anda harus meng-upload foto tersebut ke internet, lalu meletakkan <strong>Link (URL)</strong> fotonya ke dalam Sheets.</p>
+            
+            <div class="tips-box">
+                <strong>💡 Rasio Foto Ideal:</strong><br>
+                Gunakan foto rasio <strong>1:1 (Persegi)</strong> untuk Produk agar rapi. Untuk Hero/Banner di awal, bebas, namun rasio 16:9 (Landscape) sangat disarankan.
+            </div>
+
+            <p style="font-weight: 600; margin-bottom: 10px; margin-top: 20px;">Langkah-langkah upload mudah via ImgBB:</p>
+            <ul class="step-list">
+                <li>Buka website gratis <strong>imgbb.com</strong> lewat tombol di bawah.</li>
+                <li>Klik tombol <strong>"Start Uploading"</strong> dan pilih foto dari Galeri HP/Laptop Anda.</li>
+                <li>Setelah selesai, ubah opsi "Embed Codes" menjadi <strong>"Direct links" / "Tautan langsung"</strong>.</li>
+                <li>Salin (Copy) link yang berakhiran <strong>.jpg / .png</strong> tersebut.</li>
+                <li>Tempel (Paste) link tersebut ke Google Sheets Anda (misalnya di kolom <em>foto_produk_1</em>).</li>
+            </ul>
+
+            <a href="https://imgbb.com/" target="_blank" class="btn">Buka Web ImgBB Sekarang ↗</a>
+        </div>
+
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-brand">
+            <img src="https://i.ibb.co.com/5xR4zwDG/logo-tanpa-nama.png" alt="Logo" id="footer-logo">
+            <h2>Zadigital</h2>
+        </div>
+        <div class="social-links">
+            <a href="https://wa.me/6285385535252" target="_blank" class="social-icon" aria-label="WhatsApp">
+                <img src="https://cdn.simpleicons.org/whatsapp/white" alt="WhatsApp">
+            </a>
+            <a href="https://www.instagram.com/zadigital_followers" target="_blank" class="social-icon" aria-label="Instagram">
+                <img src="https://cdn.simpleicons.org/instagram/white" alt="Instagram">
+            </a>
+            <a href="https://shopee.co.id/zadigital_28" target="_blank" class="social-icon" aria-label="Shopee">
+                <img src="https://cdn.simpleicons.org/shopee/white" alt="Shopee">
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>
